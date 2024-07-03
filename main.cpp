@@ -1,21 +1,27 @@
 #include <iostream>
-using namespace std;
+#include <cstdlib> // For atoi
+#include <cstring> // For strcmp
 #include "Queue.h"
 
-int main(int argc , char **argv) {
-  Queue q;
-   int i,x;
-   
+using namespace std;
 
- for(i=1;i<argc;i++){
-        if(strcmp(argv[i],"x")==0){
-            x=q.dequeue();
-            if(x!=-1) cout<<"dequeing "<<x<<endl;
+int main(int argc, char **argv) {
+    Queue q;
+
+
+    cout << "-- Enqueing and Dequeing --" << endl;
+
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "x") == 0) {
+            int x = q.dequeue();
+            if (x != -1) {
+                cout << "Dequeuing " << x << endl;
+            }
+        } else {
+            q.enqueue(atoi(argv[i]));
+            cout << "Enqueuing " << argv[i] << endl;
         }
-        else {
-       q.enqueue(atoi(argv[i]));
-           
-        }
- }
-  return 0;
+    }
+
+    return 0;
 }
